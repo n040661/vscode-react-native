@@ -82,25 +82,10 @@ IntelliSense helps you discover objects, functions, and parameters in React Nati
 ![IntelliSense](images/intellisense.png)
 
 ### Enabling IntelliSense
-* **Note:** This section relates to older versions of VS Code and React Native Tools. The latest version of VS Code (0.10.10+) natively supports IntelliSense for Salsa. These instructions apply to older versions of VS Code (<= 0.10.9).
-    * When using VS Code 0.10.10+ with a newer React Native Tools extension (> 0.1.0) the extension will update project settings to remove the workaround described below if it was applied while using an older version of this extension or VS Code.
 
-React Native IntelliSense depends on experimental features to support JSX in VS Code.
-To enable these experimental features, you will see the following prompt immediately after opening a React Native project.
+IntelliSense for React Native projects is enabled by default, so no additional actions required and you can start typing in the code editor to see the objects, functions, and parameters of your React Native libraries and your own code.
 
-![IntelliSense prompt](images/intellisense-prompt.png)
-
-This is a one-time prompt and will enable JSX support. You will need to restart VS Code once for changes to take effect.
-
-You can verify that you have Salsa enabled and you have an installed TypeScript version that supports Salsa by checking the status indicator in the Status Bar. This shows that all is OK
-
-![Salsa Enabled](https://code.visualstudio.com/images/January_salsa-status.png)
-
-Once you have enabled IntelliSense by following the above steps, you can start typing in the code editor to see the objects, functions, and parameters of your React Native libraries and your own code.
-
-Here is what happens behind the scenes to enable JSX support:
-1. If there is no tsconfig.json file in the project root, one is created with `allowJs: true` to allow TypeScript to process JavaScript files.
-2. Typings for React and React Native are copied into the .vscode directory (only if they don't already exist, we check for a `react` or `react-native` directory under `.vscode/typings`)
+You might notice though that when you open your React Native project for the first time, the extension creates a `jsconfig.json` file in the project root with `allowJs: true` - this is required to enable IntelliSense for JavaScript files. If either `jsconfig.json` or `tsconfig.json` file already exists then nothing happens.
 
 ## Using Flowtype
 
@@ -145,15 +130,6 @@ If you change this port, then for iOS device and simulator scenarios you will ha
 For Android, we will use `adb reverse` to tunnel the default port `8081` on the device to the specified port on the local machine, so no further configuration should
 be necessary. Note that some aspects of React-Native hard-code the port to the default as specified in [this issue](https://github.com/facebook/react-native/issues/9145).
 
-To use a different `Typescript TSDK` version than the one that comes with vscode:
-
-```
-{
-  "typescript": {
-    "tsdk": "path/to/tsdk"
-  }
-}
-```
 
 To expose internal logs to the output, set the following properties:
 
