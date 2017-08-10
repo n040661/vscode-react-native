@@ -17,24 +17,8 @@ You can debug your code, quickly run `react-native` commands from the command pa
   1. Run `npm install -g react-native-cli` to install React Native CLI (0.1.10+)
   2. Set up React Native (0.19+) using the steps detailed on the React Native [getting started documentation ](https://facebook.github.io/react-native/docs/getting-started.html)
 * Open your React Native project root folder in VS Code.
-  * Hint: you should create a `.babelrc` with `sourceMaps: true` and `"presets": [ "react-native" ]` for better source-mapping support. (**required if you want TypeScript support**)
 
 Please notice that the extension uses `.vscode/.react` directory at the project root to store intermediate files required for debugging. Though these files are usually get removed after debug session ends you still might want to add this directory to your `.gitignore`
-
-### Create a `.babelrc` file for ReactNative Packager transformer
-  Create a `.babelrc` file in your React Native project root, the content of `.babelrc` at least with `sourceMaps = true`.
-  for example:
-  ```
-{
-  "presets": [
-    "react-native" // this is required for debugging with react-native/packager/transformer
-  ],
-  "plugins": [],
-  "sourceMaps": true // must be true react-native/packager/transformer using with node-module-debug
-  // because of some bugs from vscode-node-debug & vscode-react-native, "sourceMaps" cannot be "inline" or "both"
-}
-  ```
-  ** This is a requirement step if you want to debug with TypeScript. **
 
 ### Setup debug environment
 
